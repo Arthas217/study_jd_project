@@ -31,9 +31,11 @@ public class DayFundServiceImpl implements DayFundService {
         List<FundStaticDto> dtoList;
         try {
             dtoList = dayFundMapper.queryAssetsInfo(startTime, endTime);
-        } catch ( Exception e) {  // 注意自定义异常DataException时，catch必须用exception接收，否则抛出其他异常时，catch接收不到
+        } catch (Exception e) {  // 注意自定义异常DataException时，catch必须用exception接收，否则抛出其他异常时，catch接收不到
             logger.error("查询日资产统计信息失败", e);
-            throw new ServiceException("查询日资产统计信息失败");
+//            throw new ServiceException("查询日资产统计信息失败"); // 丢失原始异常
+            // 参考https://www.liaoxuefeng.com/wiki/1252599548343744/1264738764506656
+            throw new ServiceException("查询日资产统计信息失败",e);
         }
         return dtoList;
     }
