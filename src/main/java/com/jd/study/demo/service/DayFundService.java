@@ -1,6 +1,7 @@
 package com.jd.study.demo.service;
 
 import com.jd.study.demo.dto.FundStaticDto;
+import com.jd.study.demo.exception.ServiceException;
 
 import java.util.List;
 
@@ -20,5 +21,5 @@ public interface DayFundService {
      * @return
      * @throws Exception
      */
-    List<FundStaticDto> queryAssetsStaticInfo(Integer startTime,Integer endTime,String brokerCode) throws RuntimeException;
+    List<FundStaticDto> queryAssetsStaticInfo(Integer startTime,Integer endTime,String brokerCode) throws ServiceException;
 }

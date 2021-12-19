@@ -1,6 +1,7 @@
 package com.jd.study.demo.action;
 
 import com.jd.study.demo.dto.FundStaticDto;
+import com.jd.study.demo.exception.ServiceException;
 import com.jd.study.demo.service.DayFundService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +53,7 @@ public class AssetsInfoAciton extends BaseAction {
         try {
             List<FundStaticDto> list = dayFundService.queryAssetsStaticInfo(startTime, endTime, brokerCode);
             super.response(resp, STATUS_SUCCESS, "查询成功", list);
-        } catch (RuntimeException e) {
+        } catch (ServiceException e) {
             log.error("查询资产统计失败发生异常", e);
             super.response(resp, STATUS_ERROR, "查询失败");
         }

@@ -1,10 +1,11 @@
 package com.jd.study.demo.mapper;
 
 import com.jd.study.demo.dto.FundStaticDto;
+import com.jd.study.demo.exception.DataException;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -22,6 +23,6 @@ public interface DayFundMapper {
      * @return
      * @throws Exception
      */
-    List<FundStaticDto> queryAssetsInfo(@Param("startTime") Integer startTime, @Param("endTime")Integer endTime) throws Exception;
+    List<FundStaticDto> queryAssetsInfo(@Param("startTime") Integer startTime, @Param("endTime")Integer endTime) throws DataException;
 
 }

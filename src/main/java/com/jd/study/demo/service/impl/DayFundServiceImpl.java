@@ -1,5 +1,7 @@
 package com.jd.study.demo.service.impl;
 
+import com.jd.study.demo.exception.DataException;
+import com.jd.study.demo.exception.ServiceException;
 import com.jd.study.demo.mapper.DayFundMapper;
 import com.jd.study.demo.dto.FundStaticDto;
 import com.jd.study.demo.service.DayFundService;
@@ -8,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -28,9 +31,9 @@ public class DayFundServiceImpl implements DayFundService {
         List<FundStaticDto> dtoList;
         try {
             dtoList = dayFundMapper.queryAssetsInfo(startTime, endTime);
-        } catch (Exception e) {
+        } catch ( Exception e) {  // 注意自定义异常DataException时，catch必须用exception接收，否则抛出其他异常时，catch接收不到
             logger.error("查询日资产统计信息失败", e);
-            throw new RuntimeException("查询日资产统计信息失败");
+            throw new ServiceException("查询日资产统计信息失败");
         }
         return dtoList;
     }

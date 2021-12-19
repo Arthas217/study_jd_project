@@ -22,13 +22,13 @@
         select id
         from sec_day_fund
         where id >0
-<!--        <if test="startTime != null">-->
-<!--            and caldate &gt;= #{startTime}-->
-<!--        </if>-->
-<!--        <if test="endTime != null">-->
-<!--            and caldate &lt;= #{endTime}-->
-<!--        </if>-->
-<!--        group by caldate-->
+        <if test="startTime != null">
+            and caldate &gt;= #{startTime}
+        </if>
+        <if test="endTime != null">
+            and caldate &lt;= #{endTime}
+        </if>
+        group by caldate
     </select>
 
 
